@@ -117,6 +117,11 @@ async def on_message(message):
             nick = message.author.name
         else:
             nick = message.author.nick
+        nick = nick.replace('_', '\_')
+        nick = nick.replace('*', '\*')
+        nick = nick.replace('|', '\|')
+        nick = nick.replace('~', '\~')
+        nick = nick.replace('`', '\`')
         await client.send_message(message.channel, "[{}] {}".format(nick, out))
         await client.delete_message(message)
     elif message.content.startswith('!lenny '):
